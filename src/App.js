@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Alerts} from './components/alerts';
+import {Agents} from './components/agents';
+import {Rules} from './components/rules';
+import {Details} from './components/details';
+import { Navbar } from './components/navbar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (    
+      <BrowserRouter>
+        <Navbar/>
+        <Switch>
+          <Route path="/" exact component={Alerts}/>
+          <Route path="/alerts" exact component={Alerts}/>
+          <Route path="/agents" exact component={Agents}/>
+          <Route path="/rules" exact component={Rules}/>
+          <Route path="/details/:id" exact component={Details}/>
+          <Route path="/" render={() => <div><h1>Page not found</h1></div>}/>
+        </Switch>
+      </BrowserRouter>   
   );
 }
 
