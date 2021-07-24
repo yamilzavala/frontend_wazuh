@@ -1,3 +1,4 @@
+import './pagination-style.css';
 import React from 'react';
 
 export const Pagination = ({alertsPerPage, totalAlers, paginate}) => {
@@ -10,11 +11,11 @@ export const Pagination = ({alertsPerPage, totalAlers, paginate}) => {
     // console.log(pageNumbers);
 
     return (
-        <nav>   
-            <ul>            
+        <nav className="navbar-center">   
+            <ul className="pagination">            
                 {pageNumbers.map(number => (                    
-                    <li key={number} >
-                      <a onClick={() => paginate(number)} >{number}</a> 
+                    <li key={number} className="page-item">
+                      <a onClick={() => paginate(number)} className="page-link">{number}</a> 
                     </li>
                 ))}
             </ul>

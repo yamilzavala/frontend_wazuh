@@ -4,12 +4,12 @@ import {Alerts} from './components/alerts';
 import {Agents} from './components/agents';
 import {Rules} from './components/rules';
 import {Details} from './components/details';
-import { Navbar } from './components/navbar';
+import { NavbarComponent } from './components/navbar';
 
 function App() {
   return (    
       <BrowserRouter>
-        <Navbar/>
+        <NavbarComponent/>
         <Switch>
           <Route path="/" exact component={Alerts}/>
           <Route path="/alerts" exact component={Alerts}/>
