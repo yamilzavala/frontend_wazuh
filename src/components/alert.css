@@ -1,0 +1,17 @@
+.button {
+    height: 100%;
+    width: 30%;
+    background-color: rgb(120, 176, 221);
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    color: #282D35;
+    box-sizing: content-box;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .button:focus {
+    outline: none;
+  }
