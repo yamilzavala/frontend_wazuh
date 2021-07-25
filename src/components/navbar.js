@@ -17,7 +17,10 @@ export const NavbarComponent = () => {
                             <Link to="/agents" style={{textDecoration: 'none', color: '#409dc4'}} >Agents</Link>
                         </Nav.Link>
                         <Nav.Link>
-                        <   Link to="/rules" style={{textDecoration: 'none', color: '#409dc4'}} >Rules</Link>
+                            <Link to="/rules" style={{textDecoration: 'none', color: '#409dc4'}} >Rules</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link to="/dashboard" style={{textDecoration: 'none', color: '#409dc4'}} >Dashboard</Link>
                         </Nav.Link>
                     </Nav>
                 </Container>
