@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { NavbarComponent } from './components/navbar';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 
 import {Alerts} from './components/alerts';
 import {Agents} from './components/agents';
@@ -23,7 +23,7 @@ function App() {
           <Route path="/agent/details/:id" exact component={AgentDetails}/>
           <Route path="/rules" exact component={Rules}/>
           <Route path="/rule/details/:id" exact component={RuleDetails}/>
-          <Route path="/" render={() => <div><h1>Page not found</h1></div>}/>
+          <Route path="/" render={() => <div style={{position: 'absolute', left: '50%', transform: 'translateX(-50%)', marginTop: '5%'}}> <h6>Not found</h6> <Link to={'/alerts'}>Go home</Link></div>} />
         </Switch>
       </BrowserRouter>   
   );
