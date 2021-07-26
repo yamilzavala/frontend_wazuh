@@ -7,31 +7,33 @@ export const Dashboard = () => {
     const [numberOfAlertsByAgent, setNumberOfAlertsByAgent] = useState([]);
     const [labelAgents, setLabelAgents] = useState([]);
 
-    const Chart = () => {
-        let labelsAgents = [];
-        let agentsData = [];
-        const url = 'http://localhost:3000';
+    let labelsAgents = [];
+    let agentsData = [];
+    const url = 'http://localhost:3000';
 
-        //get data from server
+    const getDashboardData = () => {
         axios.get(`${url}/alertsByAgent`)
-            .then(res => {
-                for (const agent of res.data.data) {
-                    labelsAgents.push(agent.label);
-                    agentsData.push(agent.numberOfAlerts);
-                }
-                setLabelAgents(labelsAgents);
-                setNumberOfAlertsByAgent(agentsData)
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        .then(res => {   
+            for (const agent of res.data) {
+                labelsAgents.push('Agent_' + agent.label.toString());
+                agentsData.push(parseInt(agent.numberOfAlerts));
+            }
+            setLabelAgents(labelsAgents);
+            setNumberOfAlertsByAgent(agentsData);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
+    const Chart = () => {      
+        getDashboardData();
         setChartData({
-            // labels: ['Agent_01', 'Agent_02', 'Agent_03', 'Agent_04', 'Agent_05', 'Agent_06'],
+            //labels: ['Agent_01', 'Agent_02', 'Agent_03', 'Agent_04', 'Agent_05', 'Agent_06'],
             labels: labelAgents,
             datasets: [{
                 label: 'Number of Alerts by Agent',
-                // data: [5,10,15,3,55,48],
+                //data: [5,10,15,3,55,48],
                 data: numberOfAlertsByAgent,
                 backgroundColor: [                    
                     'rgba(54, 162, 235, 0.2)'                    
@@ -44,7 +46,7 @@ export const Dashboard = () => {
         });
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         Chart();
     }, []);
 
@@ -66,6 +68,6 @@ export const Dashboard = () => {
                         }}
                     />
                 </div>
-        </div>
+            </div>
     )
 }
