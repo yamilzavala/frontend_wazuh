@@ -13,7 +13,7 @@ export const Dashboard = () => {
         axios.get(`${url}/alertsByAgent`)
         .then(res => {              
             for (const agent of res.data) {                
-                labelsAgents.push(agent.label);
+                labelsAgents.push('Agent_' + agent.label.toString());
                 agentsData.push(parseInt(agent.numberOfAlerts));
             }
             
