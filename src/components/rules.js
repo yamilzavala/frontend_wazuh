@@ -2,7 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {Spinner} from 'react-bootstrap'
+import {Spinner} from 'react-bootstrap';
+import './rules.css';
 
 export const Rules = () => {
     const [rules, setRules] = useState([]);
@@ -32,7 +33,7 @@ export const Rules = () => {
 
             <ul className="list-group mb-4">
                 {rules.map((currentRule, k) => 
-                    <Link to={{pathname: `/rule/details/${currentRule.id}`, state: {dataFromRule: currentRule}}} key={k} style={{textDecoration: 'none', width: 'auto'}}>
+                    <Link className="rule-hover" to={{pathname: `/rule/details/${currentRule.id}`, state: {dataFromRule: currentRule}}} key={k} style={{textDecoration: 'none', width: 'auto'}}>
                         <li key={k} className="list-group-item">
                             <strong>Id: </strong>{currentRule.id} - <strong>Description: </strong>{currentRule.description}
                         </li>

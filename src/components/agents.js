@@ -2,7 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {Spinner} from 'react-bootstrap'
+import {Spinner} from 'react-bootstrap';
+import './agents.css';
 
 export const Agents = () => {
     const [agents, setAgents] = useState([]);
@@ -32,7 +33,7 @@ export const Agents = () => {
 
             <ul className="list-group mb-4">
                 {agents.map((currentAgent, k) => 
-                    <Link to={{pathname: `/agent/details/${currentAgent.id}`, state: {dataFromAgent: currentAgent}}} key={k} style={{textDecoration: 'none', width: 'auto'}}>
+                    <Link className="agent-hover" to={{pathname: `/agent/details/${currentAgent.id}`, state: {dataFromAgent: currentAgent}}} key={k} style={{textDecoration: 'none', width: 'auto'}}>
                         <li key={k} className="list-group-item">
                             <strong>Id: </strong>{currentAgent.id} - <strong>Name: </strong>{currentAgent.name}
                         </li>

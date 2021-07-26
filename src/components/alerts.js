@@ -53,7 +53,7 @@ export const Alerts = () => {
          
             <ul className="list-group mb-4">
                 {currentAlerts.map(currentAlert => 
-                    <Link to={{pathname: `/details/${currentAlert._id}`, state: {dataFromAlert: currentAlert}}} key={currentAlert._id} style={{textDecoration: 'none', width: 'auto'}}>
+                    <Link className="custom-hover" to={{pathname: `/details/${currentAlert._id}`, state: {dataFromAlert: currentAlert}}} key={currentAlert._id} style={{textDecoration: 'none', width: 'auto'}}>
                         <li key={currentAlert._id} className="list-group-item">
                             <strong>Id: </strong>{currentAlert._id} - <strong>Index: </strong>{currentAlert._index}
                         </li>
