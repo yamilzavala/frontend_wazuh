@@ -4,46 +4,37 @@ import axios from 'axios';
 
 export const Dashboard = () => {
     const [chartData, setChartData] = useState({});
-    const [numberOfAlertsByAgent, setNumberOfAlertsByAgent] = useState([]);
-    const [labelAgents, setLabelAgents] = useState([]);
 
-    let labelsAgents = [];
-    let agentsData = [];
-    const url = 'http://localhost:3000';
+    const Chart = () => {      
+        const labelsAgents = [];
+        const agentsData = [];
+        const url = 'http://localhost:3000';
 
-    const getDashboardData = () => {
         axios.get(`${url}/alertsByAgent`)
-        .then(res => {   
-            for (const agent of res.data) {
-                labelsAgents.push('Agent_' + agent.label.toString());
+        .then(res => {              
+            for (const agent of res.data) {                
+                labelsAgents.push(agent.label);
                 agentsData.push(parseInt(agent.numberOfAlerts));
             }
-            setLabelAgents(labelsAgents);
-            setNumberOfAlertsByAgent(agentsData);
+            
+            setChartData({
+                labels: labelsAgents,
+                datasets: [{
+                    label: 'Number of Alerts by Agent',
+                    data: agentsData,
+                    backgroundColor: [                    
+                        'rgba(54, 162, 235, 0.2)'                    
+                    ],
+                    borderColor: [                    
+                        'rgba(54, 162, 235, 1)'                   
+                    ],
+                    borderWidth: 1
+                }]
+            });
         })
         .catch(err => {
             console.log(err);
         })
-    }
-
-    const Chart = () => {      
-        getDashboardData();
-        setChartData({
-            //labels: ['Agent_01', 'Agent_02', 'Agent_03', 'Agent_04', 'Agent_05', 'Agent_06'],
-            labels: labelAgents,
-            datasets: [{
-                label: 'Number of Alerts by Agent',
-                //data: [5,10,15,3,55,48],
-                data: numberOfAlertsByAgent,
-                backgroundColor: [                    
-                    'rgba(54, 162, 235, 0.2)'                    
-                ],
-                borderColor: [                    
-                    'rgba(54, 162, 235, 1)'                   
-                ],
-                borderWidth: 1
-            }]
-        });
     }
 
     useEffect(() => {        
