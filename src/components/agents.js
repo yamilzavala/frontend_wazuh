@@ -9,7 +9,7 @@ export const Agents = () => {
     const [agents, setAgents] = useState([]);
     const [loading, setLoading] = useState(false);  
 
-    const url = 'http://localhost:3000';
+    const url = 'http://localhost:3001';
 
     const fetchAgents = () => {
         setLoading(true);

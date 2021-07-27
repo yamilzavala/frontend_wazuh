@@ -9,7 +9,7 @@ export const Rules = () => {
     const [rules, setRules] = useState([]);
     const [loading, setLoading] = useState(false);  
 
-    const url = 'http://localhost:3000';
+    const url = 'http://localhost:3001';
 
     const fetchRules = () => {
         setLoading(true);

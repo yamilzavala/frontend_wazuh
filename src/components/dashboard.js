@@ -8,7 +8,7 @@ export const Dashboard = () => {
     const Chart = () => {      
         const labelsAgents = [];
         const agentsData = [];
-        const url = 'http://localhost:3000';
+        const url = 'http://localhost:3001';
 
         axios.get(`${url}/alertsByAgent`)
         .then(res => {              
