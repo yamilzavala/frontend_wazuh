@@ -2,11 +2,14 @@ import './pagination-style.css';
 import React from 'react';
 
 export const Pagination = ({alertsPerPage, totalAlers, paginate}) => {
-    const pageNumbers = [];
-    // console.log(alertsPerPage, totalAlers);
+    let pageNumbers = [];
 
     for(let i = 1; i <= Math.ceil(totalAlers / alertsPerPage); i++) {
-        pageNumbers.push(i);
+        if (totalAlers <= alertsPerPage) {
+            pageNumbers = []
+        } else {
+            pageNumbers.push(i);
+        }
     }
     // console.log(pageNumbers);
 
